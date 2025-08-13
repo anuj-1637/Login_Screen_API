@@ -13,7 +13,7 @@ class PostAPI {
     );
     print(response.body);
     if (response.statusCode == 201) {
-      return PostDataModel.fromJson(json.decode(response.body));
+      return PostDataModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception("Failed to create post");
     }
