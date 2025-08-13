@@ -88,23 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     if (result != null) {
                       print("Created: ${result.title}");
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: Text("Success"),
-                          content: Text("User created successfully"),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                name.clear();
-                                email.clear();
-                              },
-                              child: Text("OK"),
-                            ),
-                          ],
-                        ),
-                      );
                     } else {
                       print("Failed to create user");
                       showDialog(
@@ -138,18 +121,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // Widget showDialog(String title, String content) {
-  //   return AlertDialog(
-  //     title: Text(title),
-  //     content: Text(content),
-  //     actions: [
-  //       TextButton(
-  //         onPressed: () {
-  //           Navigator.pop(context);
-  //         },
-  //         child: Text("OK"),
-  //       ),
-  //     ],
-  //   );
-  // }
+  void showDialogBox(String title, String content) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text(title),
+        content: Text("User created successfully"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              name.clear();
+              email.clear();
+            },
+            child: Text("OK"),
+          ),
+        ],
+      ),
+    );
+  }
 }
