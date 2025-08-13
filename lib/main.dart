@@ -88,25 +88,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     if (result != null) {
                       print("Created: ${result.title}");
+                      showDialogBox("success", "User created successfully");
                     } else {
                       print("Failed to create user");
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text("Error"),
-                          content: Text("Failed to create user"),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                name.clear();
-                                email.clear();
-                              },
-                              child: Text("OK"),
-                            ),
-                          ],
-                        ),
-                      );
+                      showDialogBox("error", "Failed to create user");
                     }
                   },
                   child: isLoading
@@ -126,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: Text(title),
-        content: Text("User created successfully"),
+        content: Text(content),
         actions: [
           TextButton(
             onPressed: () {
